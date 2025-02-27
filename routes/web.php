@@ -93,13 +93,12 @@ use App\Http\Controllers\Frontend\HomeController;
 
 // //Acara 5
 Route::get('user', [ManagementUserController::class, 'index']);
-
-// Route::get('user/create', [ManagementUserController::class, 'create']);
-// Route::post('user', [ManagementUserController::class, 'store']);
-// Route::get('user/{id}', [ManagementUserController::class, 'show']);
-// Route::get('user/{id}/edit', [ManagementUserController::class, 'edit']);
-// Route::put('user/{id}', [ManagementUserController::class, 'update']);
-// Route::delete('user/{id}', [ManagementUserController::class, 'destroy']);
+Route::get('user/create', [ManagementUserController::class, 'create']);
+Route::post('user', [ManagementUserController::class, 'store']);
+Route::get('user/{id}', [ManagementUserController::class, 'show']);
+Route::get('user/{id}/edit', [ManagementUserController::class, 'edit']);
+Route::put('user/{id}', [ManagementUserController::class, 'update']);
+Route::delete('user/{id}', [ManagementUserController::class, 'destroy']);
 
 // //Acara 6
 // Route::get('/home', [ManagementUserController::class, 'index']);
