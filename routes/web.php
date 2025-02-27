@@ -24,19 +24,18 @@ Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagementUserController;
-// use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Frontend\HomeController;
 
 // Acara 3
-Route::get('/index', function () {
-    return view('welcome');
-});
-Route::get('/user', [UserController::class, 'index']);
+// Route::get('/index', function () {
+//     return view('welcome');
+// });
+// Route::get('/user', [UserController::class, 'index']);
 
-Route::any('/', function () {
-    return 'ini any';
-});
+// Route::any('/', function () {
+//     return 'ini any';
+// });
 
 // Route::redirect('/here', '/there', 301);
 // Route::view('/welcome2', 'welcome');
@@ -93,7 +92,8 @@ Route::any('/', function () {
 
 
 // //Acara 5
-// Route::get('user', [ManagementUserController::class, 'index']);
+Route::get('user', [ManagementUserController::class, 'index']);
+
 // Route::get('user/create', [ManagementUserController::class, 'create']);
 // Route::post('user', [ManagementUserController::class, 'store']);
 // Route::get('user/{id}', [ManagementUserController::class, 'show']);
