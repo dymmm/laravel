@@ -101,7 +101,10 @@ Route::put('user/{id}', [ManagementUserController::class, 'update']);
 Route::delete('user/{id}', [ManagementUserController::class, 'destroy']);
 
 // //Acara 6
-// Route::get('/home', [ManagementUserController::class, 'index']);
+Route::get("/home", function(){
+    return view("home");
+});
+Route::get('/home', [ManagementUserController::class, 'index']);
 
 // //Acara 7
 // Route::resource('/homeacara7', HomeController::class);
@@ -111,3 +114,6 @@ Route::delete('user/{id}', [ManagementUserController::class, 'destroy']);
 //     Route::resource('dashboard', DashboardController::class);
 //     Route::resource('product', ProductController::class);
 // });
+
+Route::get('/session/create','SessionController@create');
+Route::get('/session/show','SessionController@show');
