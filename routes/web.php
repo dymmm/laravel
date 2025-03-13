@@ -106,7 +106,7 @@ Route::get("/home", function(){
 });
 Route::get('/home', [ManagementUserController::class, 'index']);
 
-// //Acara 7
+//Acara 7
 // Route::resource('/homeacara7', HomeController::class);
 
 // //Acara 8
@@ -117,3 +117,8 @@ Route::get('/home', [ManagementUserController::class, 'index']);
 
 Route::get('/session/create','SessionController@create');
 Route::get('/session/show','SessionController@show');
+
+
+//Acara 19
+Route::get('/upload', 'UploadController@upload')->name('upload');
+Route::post('/upload/proses', 'UploadController@upload')->name('upload.proses');
