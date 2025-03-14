@@ -25,6 +25,7 @@ Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Frontend\HomeController;
 
 // Acara 3
@@ -120,5 +121,8 @@ Route::get('/session/show','SessionController@show');
 
 
 //Acara 19
-Route::get('/upload', 'UploadController@upload')->name('upload');
-Route::post('/upload/proses', 'UploadController@upload')->name('upload.proses');
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+
+Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
