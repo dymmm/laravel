@@ -27,6 +27,7 @@ use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Middleware\CheckAge;
 
 // Acara 3
 // Route::get('/index', function () {
@@ -132,3 +133,28 @@ Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name(
 //Acara 11
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Acara 12
+Route::get('admin/profile', function() {
+    //
+})->middleware('auth');
+
+Route::get('admin/profile', function() {
+    //
+})->middleware(CheckAge::class);
+
+Route::get('/', function() {
+    //
+})->middleware('auth');
+Route::get('/', function() {
+    //
+})->middleware('web');
+Route::group(['middleware'=> ['web']], function() {
+    //
+});
+Route::middleware(['web', 'subscribed'])->group(function() {
+    //
+});
+Route::put('post/{id}', function ($id) {
+    //
+})->middleware('role:editor');
