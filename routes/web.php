@@ -11,6 +11,14 @@
 |
 */
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Middleware\CheckAge;
+// use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\App\Http\Controllers\DashboardController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,16 +26,6 @@ Route::get('/', function () {
 Route::view('/welcome', 'welcome');
 Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
-
-
-
-
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ManagementUserController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\UploadController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Middleware\CheckAge;
 
 // Acara 3
 // Route::get('/index', function () {
@@ -113,15 +111,23 @@ Route::group(['namespace'=> 'Frontend'], function () {
     Route::resource('home', 'HomeController');
 });
 
-// //Acara 8
-// Route::group(['namespace' => 'App\Http\Controllers'], function () {
-//     Route::resource('dashboard', DashboardController::class);
-//     Route::resource('product', ProductController::class);
+//Acara 8
+// Route::get(['namespace' => 'app\Http\Controllers'], function () 
+// {
+//     Route::resource('dashboard', 'DashboardController');
 // });
+
+// Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/dashboard', 'index');
+    // Route::post('/orders', 'store');
+});
 
 Route::get('/session/create','SessionController@create');
 Route::get('/session/show','SessionController@show');
 
+// Route::get('/dashboard','');
 
 //Acara 19
 Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
@@ -131,7 +137,7 @@ Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name(
 Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
 
 //Acara 11
-Auth::routes();
+// Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Acara 12
