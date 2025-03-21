@@ -9,6 +9,6 @@ class PengalamanKerja extends Model
     protected $table = 'pengalaman_kerja';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama', 'jabatan', 'tahun_masul','tahun_keluar',
+        'nama', 'jabatan', 'tahun_masuk','tahun_keluar',
     ];
 }

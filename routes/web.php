@@ -18,6 +18,8 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Middleware\CheckAge;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\PengalamanKerjaController;
+use App\Http\Controllers\backend\PendidikanController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -112,7 +114,7 @@ Route::group(['namespace'=> 'Frontend'], function () {
 });
 
 //Acara 8
-Route::group(['namespace' => 'Backend'], function () 
+Route::group(['namespace' => 'backend'], function () 
 {
     Route::resource('dashboard', 'DashboardController');
 });
@@ -129,12 +131,6 @@ Route::get('/session/show','SessionController@show');
 
 // Route::get('/dashboard','');
 
-//Acara 19
-Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
-
-Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
-
-Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
 
 //Acara 11
 // Auth::routes();
@@ -166,10 +162,27 @@ Route::put('post/{id}', function ($id) {
 })->middleware('role:editor');
 
 //Acara 13 dan 14
-Route::group(['namespace' => 'Backend'], function()
+Route::group(['namespace' => 'backend'], function()
     {
         Route::resource('dashboard','DashboardController');
         Route::resource('pendidikan','PendidikanController');
         Route::resource('pengalaman_kerja','backend\PengalamanKerjaController');
 
     });
+
+//Acara 15
+Route::group(['namespace' => 'backend'], function()
+    {
+        Route::resource('dashboard','DashboardController');
+        Route::resource('pendidikan','PendidikanController');
+    });
+
+
+
+
+    //Acara 19
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+
+Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
