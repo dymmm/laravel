@@ -1,7 +1,10 @@
 @extends('backend.layouts.template')
-@section()
-  
-  <main id="main" class="main">
+
+@section('title', 'Dashboard')
+
+@section('content')  
+
+<main id="main" class="main">
 
     <div class="pagetitle">
       <h1>Dashboard</h1>
@@ -662,4 +665,5 @@
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
   </footer><!-- End Footer -->
+
   @endsection

@@ -17,7 +17,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Middleware\CheckAge;
 // use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\App\Http\Controllers\DashboardController;
+use App\Http\Controllers\backend\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -112,17 +112,17 @@ Route::group(['namespace'=> 'Frontend'], function () {
 });
 
 //Acara 8
-// Route::get(['namespace' => 'app\Http\Controllers'], function () 
-// {
-//     Route::resource('dashboard', 'DashboardController');
-// });
+Route::group(['namespace' => 'Backend'], function () 
+{
+    Route::resource('dashboard', 'DashboardController');
+});
 
 // Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::controller(DashboardController::class)->group(function () {
-    Route::get('/dashboard', 'index');
-    // Route::post('/orders', 'store');
-});
+// Route::controller('backend/DashboardController')->group(function () {
+//     Route::get('/dashboard', 'index');
+//     // Route::post('/orders', 'store');
+// });
 
 Route::get('/session/create','SessionController@create');
 Route::get('/session/show','SessionController@show');
@@ -164,3 +164,12 @@ Route::middleware(['web', 'subscribed'])->group(function() {
 Route::put('post/{id}', function ($id) {
     //
 })->middleware('role:editor');
+
+//Acara 13
+Route::group(['namespace' => 'Backend'], function()
+    {
+        Route::resource('dashboard','DashboardController');
+        Route::resource('pendidikan','PendidikanController');
+        Route::resource('pengalaman_kerja','PengalamanController');
+
+    });
