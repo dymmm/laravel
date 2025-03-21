@@ -16,8 +16,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Middleware\CheckAge;
-// use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\PengalamanKerjaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -165,11 +165,11 @@ Route::put('post/{id}', function ($id) {
     //
 })->middleware('role:editor');
 
-//Acara 13
+//Acara 13 dan 14
 Route::group(['namespace' => 'Backend'], function()
     {
         Route::resource('dashboard','DashboardController');
         Route::resource('pendidikan','PendidikanController');
-        Route::resource('pengalaman_kerja','PengalamanController');
+        Route::resource('pengalaman_kerja','backend\PengalamanKerjaController');
 
     });

@@ -31,6 +31,25 @@
                         </a>
                     </div>
                 </section>
+                
+                <section class="panel">
+                    <div class="panel-body">
+                        @foreach ($pengalamanKerja as $item)
+                        <div class="btn-group">
+                            <a class="btn btn-warning" href="{{ route('pengalaman_kerja.edit', $item->id) }}">
+                                <i class="fa fa-edit"></i>
+                            <!-- </a>
+                            <form action="{{ route('pengalaman_kerja.destroy', $item->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE') -->
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </form>
+                        </div>
+                        @endforeach
+                    </div>
+                </section>
             </div>
         </div>
     </section>
