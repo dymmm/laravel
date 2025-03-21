@@ -22,6 +22,8 @@ use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\Controllers\backend\PendidikanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\CobaController;
+use App\Http\Controllers\ApiPendidikanController;
+
 
 
 
@@ -206,3 +208,10 @@ Route::get('/dropzone', [UploadController::class, 'dropzone'])->name('dropzone')
 Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
 Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
 Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
+
+//Acara 21
+Route::get('/api/pendidikan', [ApiPendidikanController::class, 'getAll']);
+Route::get('/api/pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
+Route::post('/api/pendidikan', [ApiPendidikanController::class, 'createPen']);
+Route::put('/api/pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
+Route::delete('/api/pendidikan/{id}', [ApiPendidikanController::class, 'deletePen']);
