@@ -13,12 +13,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Middleware\CheckAge;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\Controllers\backend\PendidikanController;
+use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\CobaController;
+
+
 
 
 Route::get('/', function () {
@@ -170,15 +175,24 @@ Route::group(['namespace' => 'backend'], function()
 
     });
 
-//Acara 15
+//Acara 15 dan 16
 Route::group(['namespace' => 'backend'], function()
     {
         Route::resource('dashboard','DashboardController');
         Route::resource('pendidikan','PendidikanController');
     });
 
+//Acara 17
+Route::get('/session/create', [SessionController::class, 'create']);
+Route::get('/session/show', [SessionController::class, 'show']);
+Route::get('/session/delete', [SessionController::class, 'delete']);
 
+//Acara 18
+Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
 
+Route::get('/formulir', [PegawaiController::class, 'formulir']);
+Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
+Route::get('/cobaerror/{nama?}', [CobaController::class, 'index']);
 
     //Acara 19
 Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
